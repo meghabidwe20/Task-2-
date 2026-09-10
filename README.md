@@ -1,56 +1,315 @@
-# Task 2: Sales Data Analysis
+# Sales Data Analysis
 
-## Dataset
-The **Cleaned Data** sheet contains 67 transaction rows, 65 unique Order IDs, and 5 unique customers. The cleaning workbook states that repeated Order IDs were reviewed and retained as valid entries.
+## Week 1 – Task 2
+
+### Project Objective
+
+The objective of this project is to analyze an e-commerce sales dataset to understand business performance, identify sales trends, evaluate product and category performance, and generate customer-focused business insights.
+
+The analysis focuses on calculating key performance indicators (KPIs), identifying important sales trends, comparing regional performance, and understanding delivery-status patterns.
+
+---
+
+## Dataset Description
+
+The dataset used for this project is an e-commerce sales dataset containing transactional information.
+
+### Main Features
+
+* Order ID
+* Date
+* Status
+* Fulfilment
+* Sales Channel
+* ship-service-level
+* Style
+* SKU
+* Category
+* Size
+* ASIN
+* Courier Status
+* Qty
+* currency
+* Amount
+* ship-city
+* ship-state
+* ship-postal-code
+* ship-country
+* B2B
+
+The dataset contains approximately 129,000 sales records.
+
+---
+
+## Tools and Technologies Used
+
+* **Python**
+* **Pandas** – Data cleaning and analysis
+* **NumPy** – Numerical calculations
+* **Matplotlib** – Data visualization
+* **Jupyter Notebook** – Analysis and documentation
+* **Microsoft Excel** – Dataset inspection and validation
+
+---
+
+## Key Steps Performed
+
+### 1. Data Loading
+
+The sales dataset was imported into Python using Pandas.
+
+### 2. Data Preparation
+
+The following preparation steps were performed:
+
+* Checked dataset structure and column names.
+* Converted the Date column into datetime format.
+* Converted Amount and Qty into numeric values.
+* Checked for missing values.
+* Reviewed duplicate and invalid records.
+* Examined different order and delivery statuses.
+
+### 3. Completed Sales Filtering
+
+For the main KPI analysis, records with the status:
+
+**`Shipped - Delivered to Buyer`**
+
+were treated as completed sales.
+
+Cancelled, pending, returned, and other non-completed statuses were excluded from the completed-sales KPI calculations.
+
+### 4. KPI Calculation
+
+The following KPIs were calculated:
+
+* Total Revenue
+* Total Orders
+* Average Order Value
+* Total Units Sold
+* Top-Selling Category
+* Best Revenue-Generating Product
+
+### 5. Trend Analysis
+
+Sales were analyzed across time to identify:
+
+* Monthly revenue trends
+* Monthly order trends
+* Sales growth and decline
+* Highest and lowest performing months
+* Category performance over time
+
+### 6. Regional Analysis
+
+Sales and order performance were analyzed by:
+
+* State
+* City
+* Order density
+* Revenue contribution
+
+### 7. Delivery Status Analysis
+
+Different delivery and order statuses were compared to understand their effect on revenue realization.
+
+### 8. Customer Insights
+
+Customer-related patterns were explored using available fields such as city, state, category, order frequency, and B2B status.
+
+---
 
 ## KPI Summary
 
-| KPI | Result |
-|---|---:|
-| Total Revenue | 17,090.07 |
-| Total Orders / Transactions | 67 |
-| Unique Order IDs | 65 |
-| Average Order Value | 255.08 |
-| Total Units Sold | 820 |
-| Top-Selling Category | Toys |
-| Best Revenue-Generating Product | Ceiling Fan |
+| KPI                 |      Result |
+| ------------------- | ----------: |
+| Total Revenue       | ₹18,650,815 |
+| Total Orders        |      26,566 |
+| Average Order Value |     ₹702.06 |
+| Total Units Sold    |      28,886 |
+| Top Category        |         Set |
+| Best Product/Style  |     JNE3797 |
 
-**Note:** The dataset has 67 transaction rows but 65 unique Order IDs. The main AOV uses the 67 retained transaction rows, while AOV by unique Order ID would be 262.92.
+---
 
-## 8 Key Observations
+## Major Findings
 
-1. Total revenue is **17,090.07** across the 67 retained transaction rows.
-2. **Toys** is the top revenue category at **3,712.18**, contributing **21.7%** of revenue.
-3. **Home & Kitchen** ranks second at **3,541.27**; the two leading categories together contribute **42.4%**.
-4. **Ceiling Fan** is the highest revenue-generating product at **490.77**.
-5. **Backpack** has the highest unit volume at **80 units**, showing that volume leadership and revenue leadership can differ.
-6. **August 2024** is the strongest month, with revenue of **4,525.08**.
-7. The top three customers generate **16,544.73**, approximately **96.8%** of total revenue, indicating strong customer concentration.
-8. **North** has the highest revenue among the City/Region values at **1,896.79**.
+1. The business generated approximately **₹18.65 million** in completed sales revenue.
+
+2. The average completed order value was approximately **₹702**.
+
+3. The **Set category** was the highest revenue-generating category, contributing approximately **47.19%** of completed revenue.
+
+4. **Set, kurta, and Western Dress** together contributed more than **93% of completed revenue**, indicating strong sales concentration in these categories.
+
+5. **April recorded the highest completed sales revenue**, with approximately **₹5.63 million** in revenue.
+
+6. Sales declined significantly after April, with substantial decreases during May, June, and July.
+
+7. **Maharashtra** generated the highest state-level completed revenue.
+
+8. **Bengaluru** recorded the highest completed-order density among cities.
+
+9. **JNE3797** was the highest revenue-generating product/style.
+
+10. The dataset contains significant cancelled and non-delivered orders, making delivery-status monitoring important for revenue realization.
+
+---
 
 ## Trend-Based Interpretation
 
-Revenue is highly uneven across months. August is the peak month at **4,525.08**, while revenue falls in September, October, and November. This pattern matters because planning based on an average month could understate the variability in sales performance. The dataset shows the pattern but does not establish the cause, so seasonality, promotions, product mix, or other explanations should be investigated rather than assumed.
+April was the strongest sales month, with completed revenue reaching approximately ₹5.63 million. This represented a significant increase compared with March.
+
+However, sales declined considerably after April. This suggests that the April increase may have been influenced by temporary factors such as promotions, seasonal demand, product availability, or marketing campaigns.
+
+### Business Recommendation
+
+The business should investigate the factors responsible for the April sales spike and determine which successful strategies can be repeated during lower-performing months.
+
+---
 
 ## Customer Insights
 
-- There are **5 unique customers**.
-- Customer **17850** contributes the highest revenue (**7,373.45**) and has the highest transaction count (**28**).
-- Customer **12583** records the highest unit volume (**449 units**).
-- Customers **17850, 12583, and 13047** account for approximately **96.8%** of revenue.
-- Two customers appear only once in the transaction data, while the other three customers account for most activity.
+The dataset does not contain a dedicated **Customer ID** field. Therefore, the following customer-level metrics cannot be reliably calculated:
+
+* Repeat customer rate
+* Unique customer count
+* Customer lifetime value
+* Revenue from repeat customers
+* Individual customer purchase frequency
+
+However, location-based and product-based customer insights can still be generated.
+
+### Key Customer Insights
+
+* Bengaluru had the highest completed-order density.
+* Maharashtra was the highest-revenue state.
+* Set was the most preferred/highest-revenue category.
+* High sales were concentrated in a relatively small number of categories.
+* Future datasets should include a reliable Customer ID to enable detailed customer segmentation and repeat-purchase analysis.
+
+---
 
 ## Recommendations
 
-1. Investigate the factors behind the August peak before treating it as a repeatable seasonal pattern.
-2. Monitor Toys and Home & Kitchen closely because they are the two largest revenue categories.
-3. Use retention and cross-selling strategies for high-value repeat customers because revenue is concentrated among a small customer base.
-4. Track both revenue and units: high-volume products such as Backpack and high-revenue products such as Ceiling Fan represent different types of product performance.
+* Maintain sufficient inventory for high-performing categories such as **Set, kurta, and Western Dress**.
+* Investigate the reasons behind the exceptional April sales performance.
+* Develop promotional strategies to reduce the sharp sales decline after peak periods.
+* Focus marketing efforts on high-performing states and cities.
+* Monitor cancelled and returned orders to reduce revenue leakage.
+* Promote high-performing products such as **JNE3797**.
+* Add Customer ID information to future datasets for better customer-level analysis.
 
-## Execution
+---
 
-```bash
-pip install pandas openpyxl matplotlib
-python Sales_Data_Analysis.py
+## Project Folder Structure
+
+```text
+Sales-Data-Analysis/
+│
+├── README.md
+│
+├── data/
+│   ├── raw/
+│   │   └── Sales Data Analysis.xlsx
+│   │
+│   └── cleaned/
+│       └── cleaned_sales_data.xlsx
+│
+├── notebooks/
+│   └── Sales_Data_Analysis.ipynb
+│
+├── scripts/
+│   └── sales_analysis.py
+│
+├── outputs/
+│   ├── kpi_summary.csv
+│   ├── category_analysis.csv
+│   ├── monthly_sales.csv
+│   ├── regional_analysis.csv
+│   └── product_analysis.csv
+│
+└── visuals/
+    ├── monthly_sales_trend.png
+    ├── category_revenue.png
+    └── regional_sales.png
 ```
 
+---
+
+## How to Run the Project
+
+### Step 1: Install Required Libraries
+
+```bash
+pip install pandas numpy matplotlib openpyxl jupyter
+```
+
+### Step 2: Open the Project
+
+Navigate to the project directory:
+
+```bash
+cd Sales-Data-Analysis
+```
+
+### Step 3: Start Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+### Step 4: Open the Notebook
+
+Open:
+
+```text
+notebooks/Sales_Data_Analysis.ipynb
+```
+
+### Step 5: Run the Notebook
+
+Run all cells from top to bottom to reproduce the analysis, KPI calculations, tables, and visualizations.
+
+---
+
+## Important Methodology
+
+For the primary KPI analysis, only orders with the status:
+
+```text
+Shipped - Delivered to Buyer
+```
+
+were considered completed sales.
+
+This approach prevents cancelled, pending, returned, or otherwise incomplete transactions from being incorrectly counted as completed revenue.
+
+---
+
+## Limitations
+
+* The dataset does not contain a Customer ID.
+* Detailed repeat-customer analysis is therefore not possible.
+* Some records contain missing values.
+* Different order statuses represent different stages of fulfillment.
+* Revenue should not be interpreted solely from the Amount field without considering order status.
+
+---
+
+## Conclusion
+
+The sales analysis demonstrates that business revenue is concentrated in a few major product categories and regions. The Set category was the strongest contributor to revenue, while April was the strongest sales month.
+
+The significant decline following April highlights the need for consistent demand-generation strategies. Regional analysis also indicates opportunities to focus marketing and inventory planning on high-performing locations.
+
+Overall, the analysis provides actionable insights into **sales performance, product demand, regional performance, delivery status, and customer behavior**.
+
+---
+
+## Author
+
+**Name:** Megha Bidwe
+**Project:** Sales Data Analysis
+**Task:** Week 1 – Task 2
+**Tools:** Python, Pandas, NumPy, Matplotlib, Jupyter Notebook, Excel
